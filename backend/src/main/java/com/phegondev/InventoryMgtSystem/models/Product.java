@@ -15,7 +15,9 @@ import java.time.LocalDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "products")
+@Table(name = "products", indexes = {
+        @Index(name = "idx_product_sku", columnList = "sku")
+})
 @Data
 @Builder
 public class Product {

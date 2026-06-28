@@ -1,10 +1,14 @@
 package com.phegondev.InventoryMgtSystem.dtos;
 
 import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class DashboardMetricsDTO {
     private long totalProducts;
     private long totalOrders;

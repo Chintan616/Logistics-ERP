@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,6 +39,7 @@ public class ProductServiceImpl implements ProductService {
     private static final String IMAGE_DIRECTORY_2 = System.getProperty("user.dir") + "/../frontend/public/products/";
 
     @Override
+    @CacheEvict(value = "products", allEntries = true)
     public Response saveProduct(ProductDTO productDTO, MultipartFile imageFile) {
 
         Category category = categoryRepository.findById(productDTO.getCategoryId())
@@ -71,6 +74,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @CacheEvict(value = "products", allEntries = true)
     public Response updateProduct(ProductDTO productDTO, MultipartFile imageFile) {
 
         //check if product exisit
@@ -126,6 +130,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Cacheable(value = "products")
     public Response getAllProducts() {
 
         List<Product> productList = productRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
@@ -154,6 +159,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @CacheEvict(value = "products", allEntries = true)
     public Response deleteProduct(Long id) {
 
         productRepository.findById(id)

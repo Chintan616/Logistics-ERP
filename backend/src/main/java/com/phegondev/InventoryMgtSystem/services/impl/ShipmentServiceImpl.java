@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +37,7 @@ public class ShipmentServiceImpl implements ShipmentService {
 
     @Override
     @Transactional
+    @CacheEvict(value = "dashboard_metrics", allEntries = true)
     public Response createShipment(ShipmentRequest shipmentRequest) {
         try {
             Order order = orderRepository.findById(shipmentRequest.getOrderId())
@@ -115,6 +117,7 @@ public class ShipmentServiceImpl implements ShipmentService {
 
     @Override
     @Transactional
+    @CacheEvict(value = "dashboard_metrics", allEntries = true)
     public Response updateShipmentStatus(Long id, ShipmentStatus newStatus) {
         try {
             Shipment shipment = shipmentRepository.findById(id).orElseThrow(() -> new NotFoundException("Shipment Not Found"));

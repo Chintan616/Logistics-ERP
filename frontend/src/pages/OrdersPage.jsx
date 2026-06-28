@@ -78,10 +78,18 @@ const OrdersPage = () => {
         <Layout>
             {message && <div className="message">{message}</div>}
             <div className="page-content">
-                <h2>Orders Management</h2>
-                <button className="add-btn" onClick={() => setIsCreating(!isCreating)}>
-                    {isCreating ? "Cancel" : "Create New Order"}
-                </button>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+                    <div>
+                        <h2 style={{ marginBottom: '8px' }}>Manage Orders</h2>
+                        <p style={{ color: 'var(--muted-foreground)', fontSize: '14px' }}>Track customer orders end-to-end — from placement through fulfillment to dispatch.</p>
+                    </div>
+                    <div style={{ display: 'flex', gap: '12px' }}>
+                        <button className="ghost-btn" style={{ background: 'var(--surface)', border: '1px solid var(--hairline)', color: 'var(--foreground)' }}>Export CSV</button>
+                        <button className="add-btn" style={{ marginBottom: 0 }} onClick={() => setIsCreating(!isCreating)}>
+                            {isCreating ? "Cancel" : "+ Add New Order"}
+                        </button>
+                    </div>
+                </div>
 
                 {isCreating && (
                     <div className="form-container" style={{marginBottom: "20px"}}>
@@ -127,23 +135,33 @@ const OrdersPage = () => {
                 <table className="data-table">
                     <thead>
                         <tr>
-                            <th>Order No</th>
-                            <th>Customer</th>
+                            <th>Order</th>
+                            <th>Customer / Destination</th>
                             <th>Status</th>
-                            <th>Date</th>
+                            <th>Placed</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {orders.map(order => (
                             <tr key={order.id}>
-                                <td>{order.orderNumber}</td>
-                                <td>{order.customerName}</td>
+                                <td>
+                                    <div style={{ color: 'var(--brand)', fontWeight: 600, marginBottom: '4px' }}>#{order.orderNumber}</div>
+                                    <div style={{ fontSize: '12px', color: 'var(--foreground)' }}>{order.customerName}</div>
+                                </td>
+                                <td>
+                                    <div style={{ fontWeight: 500 }}>{order.customerName}</div>
+                                    <div style={{ fontSize: '12px', color: 'var(--muted-foreground)' }}>Standard Shipping</div>
+                                </td>
                                 <td>
                                     <span className={`status-badge status-${order.status.toLowerCase()}`}>
                                         {order.status}
                                     </span>
                                 </td>
-                                <td>{new Date(order.orderDate).toLocaleString()}</td>
+                                <td>{new Date(order.orderDate).toLocaleDateString()}</td>
+                                <td>
+                                    <button className="ghost-btn" style={{ padding: '4px 8px', fontSize: '12px', background: 'transparent', color: 'var(--muted-foreground)' }}>View</button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

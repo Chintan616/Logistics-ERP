@@ -14,7 +14,10 @@ import java.time.LocalDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "shipments")
+@Table(name = "shipments", indexes = {
+        @Index(name = "idx_shipment_status", columnList = "status"),
+        @Index(name = "idx_shipment_tracking", columnList = "trackingNumber")
+})
 @Data
 @Builder
 public class Shipment {

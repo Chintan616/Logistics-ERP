@@ -55,3 +55,6 @@ Icon
 frontend/public/products/*
 !frontend/public/products/.keep
 backend/product-images/
+
+
+implementation_plan.md
