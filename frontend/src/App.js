@@ -15,12 +15,14 @@ import ProfilePage from "./pages/ProfilePage";
 import DashboardPage from "./pages/DashboardPage";
 import OrdersPage from "./pages/OrdersPage";
 import ShipmentsPage from "./pages/ShipmentsPage";
+import HomePage from "./pages/HomePage";
 
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<HomePage/>}/>
         <Route path="/register" element={<RegisterPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
 

@@ -40,6 +40,9 @@ const LoginPage = () => {
 
   return (
     <div className="auth-container">
+      <div style={{ marginBottom: '24px', textAlign: 'left' }}>
+        <a href="/" style={{ color: 'var(--muted-foreground)', fontSize: '12px', textDecoration: 'none' }}>← Back to Home</a>
+      </div>
       <h2>Login</h2>
 
       {message && <p className="message">{message}</p>}
