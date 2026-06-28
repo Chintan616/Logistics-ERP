@@ -1,0 +1,57 @@
+# =========================
+# Backend (Spring Boot / Maven)
+# =========================
+backend/target/
+backend/bin/
+backend/build/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/logs/
+*.class
+*.log
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# =========================
+# Frontend (React / Node)
+# =========================
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.pnp.*
+frontend/.yarn/*
+!frontend/.yarn/cache
+!frontend/.yarn/releases
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# =========================
+# OS & IDE Files
+# =========================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# =========================
+# Uploaded Images/Files
+# =========================
+# Assuming product images are saved locally during dev
+frontend/public/products/*
+!frontend/public/products/.keep
+backend/product-images/
