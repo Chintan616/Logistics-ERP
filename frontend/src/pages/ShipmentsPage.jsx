@@ -129,7 +129,11 @@ const ShipmentsPage = () => {
                             <tr key={shipment.id}>
                                 <td>{shipment.trackingNumber}</td>
                                 <td>{shipment.courierName}</td>
-                                <td>{shipment.status}</td>
+                                <td>
+                                    <span className={`status-badge status-${shipment.status.toLowerCase()}`}>
+                                        {shipment.status}
+                                    </span>
+                                </td>
                                 <td>{shipment.shipmentDate ? new Date(shipment.shipmentDate).toLocaleString() : "Not Shipped"}</td>
                                 <td>
                                     {shipment.status === "PENDING" && (

@@ -138,7 +138,11 @@ const OrdersPage = () => {
                             <tr key={order.id}>
                                 <td>{order.orderNumber}</td>
                                 <td>{order.customerName}</td>
-                                <td>{order.status}</td>
+                                <td>
+                                    <span className={`status-badge status-${order.status.toLowerCase()}`}>
+                                        {order.status}
+                                    </span>
+                                </td>
                                 <td>{new Date(order.orderDate).toLocaleString()}</td>
                             </tr>
                         ))}
